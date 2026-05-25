@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="标签云 — Nebula Tech 星云科技博客，按标签浏览 AI、量子计算、Rust、SpaceX 等技术文章。">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:title" content="标签云 — Nebula Tech">
+  <meta property="og:description" content="按标签浏览 AI、量子计算、Rust、SpaceX 等技术文章。">
+  <meta property="og:type" content="website">
+  <title>标签云 — Nebula Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .tags-container {
+      padding-top: 120px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .tags-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .tags-header h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    .tags-header h1 .prefix {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 400;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .tags-header p {
+      color: var(--text-secondary);
+    }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      margin-bottom: 3rem;
+    }
+    .tag-cloud-item {
+      font-family: var(--font-mono);
+      padding: 6px 18px;
+      border-radius: 50px;
+      background: rgba(0, 229, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .tag-cloud-item:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0, 229, 255, 0.12);
+    }
+    .tag-cloud-item.active {
+      background: rgba(0, 229, 255, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .tag-cloud-item.size-s { font-size: 0.75rem; }
+    .tag-cloud-item.size-m { font-size: 0.9rem; }
+    .tag-cloud-item.size-l { font-size: 1.1rem; font-weight: 600; }
+    .tag-cloud-item.size-xl { font-size: 1.3rem; font-weight: 700; }
+    .tag-cloud-item .tag-count {
+      font-size: 0.65rem;
+      opacity: 0.6;
+      margin-left: 3px;
+    }
+    .filtered-articles {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .filtered-article {
+      display: flex;
+      gap: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: var(--transition);
+    }
+    .filtered-article:hover {
+      border-color: var(--border-glow);
+      background: var(--bg-card-hover);
+      transform: translateX(4px);
+    }
+    .filtered-article-date {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 65px;
+    }
+    .filtered-article-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .filtered-article-body h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+    .filtered-article-body h3 a {
+      transition: var(--transition);
+    }
+    .filtered-article-body h3 a:hover {
+      color: var(--accent);
+    }
+    .filtered-article-body p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .filtered-article-tags {
+      display: flex;
+      gap: 5px;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filtered-article-tags .mini-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 2px 10px;
+      border-radius: 50px;
+      background: rgba(0, 229, 255, 0.06);
+      color: var(--accent);
+      border: 1px solid rgba(0, 229, 255, 0.1);
+    }
+    .no-results {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 3rem;
+      font-family: var(--font-mono);
+    }
+    @media (max-width: 768px) {
+      .filtered-article {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .tags-header h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div id="nav-placeholder"></div>
+  <div id="search-placeholder"></div>
+
+  <main>
+    <div class="tags-container">
+      <div class="tags-header">
+        <h1><span class="prefix">// 标签</span>标签云</h1>
+        <p>点击标签筛选相关文章</p>
+      </div>
+      <div class="tag-cloud" id="tag-cloud"></div>
+      <div class="filtered-articles" id="filtered-articles"></div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script src="script.js"></script>
+  <script src="tags.js"></script>
+</body>
+</html>

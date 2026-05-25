@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="关于星云科技 —— Nebula Tech 是一群热爱科技的人创建的独立博客，致力于追踪和解读最前沿的技术趋势。">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:title" content="关于我们 — Nebula Tech">
+  <meta property="og:description" content="Nebula Tech 是一群热爱科技的人创建的独立博客，致力于追踪和解读最前沿的技术趋势。">
+  <meta property="og:type" content="website">
+  <title>关于我们 — Nebula Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-container {
+      padding-top: 120px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .about-hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .about-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .about-hero p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .about-section {
+      margin-bottom: 3rem;
+    }
+    .about-section h2 {
+      font-family: var(--font-mono);
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .about-section h2::before {
+      content: '// ';
+      font-weight: 400;
+    }
+    .about-section p {
+      color: var(--text-secondary);
+      line-height: 1.85;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .mission-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .mission-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .mission-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+    .mission-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .mission-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .mission-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .team-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .team-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+    }
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--gradient-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #fff;
+      margin: 0 auto 1rem;
+    }
+    .team-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    .team-role {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .team-bio {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 6px 16px;
+      border-radius: 50px;
+      background: rgba(0, 229, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border-glow);
+      border-radius: 50px;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+    .contact-link:hover {
+      background: rgba(0, 229, 255, 0.08);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    @media (max-width: 768px) {
+      .mission-list,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+      .contact-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div id="nav-placeholder"></div>
+  <div id="search-placeholder"></div>
+
+  <main>
+    <div class="about-container">
+      <div class="about-hero">
+        <h1>关于星云科技</h1>
+        <p>Nebula Tech 是一群热爱科技的人创建的独立博客，致力于追踪和解读最前沿的技术趋势，为中文技术社区贡献深度内容。</p>
+      </div>
+
+      <div class="about-section">
+        <h2>我们的使命</h2>
+        <div class="mission-list">
+          <div class="mission-card">
+            <div class="mission-icon">&#x1F52C;</div>
+            <h3>深度报道</h3>
+            <p>不只报道新闻，更深入分析技术背后的原理与趋势</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon">&#x1F30D;</div>
+            <h3>连接社区</h3>
+            <p>搭建中文技术社区交流平台，让知识自由流动</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon">&#x1F680;</div>
+            <h3>推动创新</h3>
+            <p>发掘前沿项目与研究方向，助力技术创新与落地</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>作者团队</h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">Z</div>
+            <h3>Zhang San</h3>
+            <span class="team-role">AI 研究员</span>
+            <p class="team-bio">专注于大语言模型训练与对齐研究，热爱分享技术见解。</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">L</div>
+            <h3>Li Si</h3>
+            <span class="team-role">量子计算工程师</span>
+            <p class="team-bio">从事量子算法与量子纠错研究，关注量子计算产业化进程。</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">W</div>
+            <h3>Wang Wu</h3>
+            <span class="team-role">全栈开发者</span>
+            <p class="team-bio">十年全栈开发经验，专注于 Rust 与分布式系统架构设计。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>技术栈</h2>
+        <p>本博客使用纯静态技术构建，追求极致的性能与设计体验：</p>
+        <div class="tech-stack">
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">CSS3 / CSS Variables</span>
+          <span class="tech-tag">Vanilla JavaScript</span>
+          <span class="tech-tag">Canvas API</span>
+          <span class="tech-tag">CSS Grid / Flexbox</span>
+          <span class="tech-tag">Intersection Observer</span>
+          <span class="tech-tag">localStorage</span>
+          <span class="tech-tag">Responsive Design</span>
+          <span class="tech-tag">Dark / Light Theme</span>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>联系我们</h2>
+        <p>欢迎投稿、合作或提供反馈建议。我们始终欢迎技术交流与讨论。</p>
+        <div class="contact-links">
+          <a href="mailto:nebula@tech.blog" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 4-10 7L2 4"/></svg>
+            nebula@tech.blog
+          </a>
+          <a href="#" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

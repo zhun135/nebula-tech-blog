@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nebula Tech 星云科技博客 —— 追踪 2026 年最前沿的科技脉搏：AI 大模型争霸、量子计算新纪元、星舰试飞、开源革命。">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:title" content="Nebula Tech · 星云科技博客">
+  <meta property="og:description" content="追踪 2026 年最前沿的科技脉搏 —— AI 大模型争霸、量子计算新纪元、星舰试飞、开源革命。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nebula.tech">
+  <title>Nebula Tech · 星云科技博客</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div id="nav-placeholder"></div>
+  <div id="search-placeholder"></div>
+
+  <!-- 主内容 -->
+  <main>
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span> EXPLORE THE FUTURE
+        </div>
+        <h1 class="hero-title">
+          <span class="title-line">探索科技的</span>
+          <span class="title-line accent">
+            <span id="typewriter"></span><span class="cursor">|</span>
+          </span>
+        </h1>
+        <p class="hero-desc">
+          追踪 2026 年最前沿的科技脉搏 —— AI 大模型争霸、量子计算新纪元<br>
+          星舰试飞、开源革命、具身智能崛起...每一个想法都在改变世界
+        </p>
+        <div class="hero-actions">
+          <a href="#articles" class="btn-primary">
+            <span>浏览文章</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#subscribe" class="btn-outline">
+            <span>订阅更新</span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-count="128">0</span>
+            <span class="stat-label">技术文章</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-count="56">0</span>
+            <span class="stat-label">开源项目</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-count="32K">0</span>
+            <span class="stat-label">社区成员</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="glowing-sphere"></div>
+        <div class="orb-ring ring-1"></div>
+        <div class="orb-ring ring-2"></div>
+        <div class="orb-ring ring-3"></div>
+      </div>
+      <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- 特色文章 -->
+    <section class="featured" id="articles">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-prefix">// 精选</span>
+          推荐文章
+        </h2>
+        <div class="section-line"></div>
+        <a href="archive.html" class="view-all">查看全部 &rarr;</a>
+      </div>
+
+      <div class="featured-grid">
+        <article class="blog-card featured-main">
+          <div class="card-image">
+            <div class="card-img-placeholder img-ai"></div>
+            <div class="card-category">AI · 大模型</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-date">2026.05.24</span>
+              <span class="meta-divider">|</span>
+              <span class="meta-read">14 min 阅读</span>
+            </div>
+            <h3 class="card-title">
+              <a href="article.html">GPT-5.5 vs Claude Opus 4.7：2026 大模型争霸战全景解读</a>
+            </h3>
+            <p class="card-excerpt">
+              短短两周内，OpenAI 发布 GPT-5.5 全面超越 Claude Opus 4.7，幻觉减少 60%。与此同时 Claude 被曝正在训练 Jupiter 新分支。从参数竞赛到 Agent 协作，这场 AI 军备竞赛正在重新定义技术的边界...
+            </p>
+            <div class="card-footer">
+              <div class="author">
+                <div class="author-avatar">Z</div>
+                <span>Zhang San</span>
+              </div>
+              <div class="card-tags">
+                <span class="tag">GPT-5.5</span>
+                <span class="tag">Claude</span>
+                <span class="tag">深度</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="card-image">
+            <div class="card-img-placeholder img-quantum"></div>
+            <div class="card-category">量子计算</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-date">2026.05.13</span>
+              <span class="meta-divider">|</span>
+              <span class="meta-read">10 min 阅读</span>
+            </div>
+            <h3 class="card-title">
+              <a href="article-jiuzhang.html">中国"九章四号"再破世界纪录：3050 光子改写量子霸权</a>
+            </h3>
+            <p class="card-excerpt">
+              中国科大成功研制九章四号量子计算原型机，操控 3050 个光子，比超算快 10^54 倍，论文登 Nature。从 76 光子到 3050 光子的进化之路...
+            </p>
+            <div class="card-footer">
+              <div class="author">
+                <div class="author-avatar">L</div>
+                <span>Li Si</span>
+              </div>
+              <div class="card-tags">
+                <span class="tag">九章</span>
+                <span class="tag">Nature</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="card-image">
+            <div class="card-img-placeholder img-space"></div>
+            <div class="card-category">航天科技</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-date">2026.05.23</span>
+              <span class="meta-divider">|</span>
+              <span class="meta-read">8 min 阅读</span>
+            </div>
+            <h3 class="card-title">
+              <a href="article-starship.html">SpaceX 星舰 V3 第 12 次试飞：新一代系统首飞全记录</a>
+            </h3>
+            <p class="card-excerpt">
+              5 月 22 日，全新设计的星舰 V3 系统从得州 Starbase 升空，33 台猛禽 3 发动机成功点火，部署 20 颗模拟卫星后受控溅落印度洋。助推器回收失败，但大部分核心目标达成...
+            </p>
+            <div class="card-footer">
+              <div class="author">
+                <div class="author-avatar">W</div>
+                <span>Wang Wu</span>
+              </div>
+              <div class="card-tags">
+                <span class="tag">SpaceX</span>
+                <span class="tag">V3</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="card-image">
+            <div class="card-img-placeholder img-rust"></div>
+            <div class="card-category">开发者工具</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-date">2026.04.16</span>
+              <span class="meta-divider">|</span>
+              <span class="meta-read">11 min 阅读</span>
+            </div>
+            <h3 class="card-title">
+              <a href="article.html">Claude Code 实战指南：用 AI Agent 管理十万行代码库</a>
+            </h3>
+            <p class="card-excerpt">
+              Anthropic 发布 Claude Opus 4.7 同时推出 Managed Agents，Claude Code 已成为程序员标配。深度体验多智能体共享记忆、"dreaming"机制与 100 万 token 长文本窗口的实际表现...
+            </p>
+            <div class="card-footer">
+              <div class="author">
+                <div class="author-avatar">Z</div>
+                <span>Zhang San</span>
+              </div>
+              <div class="card-tags">
+                <span class="tag">Claude Code</span>
+                <span class="tag">Agent</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="card-image">
+            <div class="card-img-placeholder img-quantum"></div>
+            <div class="card-category">量子计算</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-date">2026.05.21</span>
+              <span class="meta-divider">|</span>
+              <span class="meta-read">7 min 阅读</span>
+            </div>
+            <h3 class="card-title">
+              <a href="article.html">法国 Pasqal 首次证明逻辑量子比特优于物理量子比特</a>
+            </h3>
+            <p class="card-excerpt">
+              中性原子量子计算里程碑：逻辑量子比特在求解微分方程时准确度平均提升超 50%，非线性问题上提升高达 10 倍。量子纠错从理论走向实用...
+            </p>
+            <div class="card-footer">
+              <div class="author">
+                <div class="author-avatar">L</div>
+                <span>Li Si</span>
+              </div>
+              <div class="card-tags">
+                <span class="tag">QEC</span>
+                <span class="tag">Pasqal</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <div class="card-image">
+            <div class="card-img-placeholder img-security"></div>
+            <div class="card-category">AI 安全</div>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="meta-date">2026.04.28</span>
+              <span class="meta-divider">|</span>
+              <span class="meta-read">9 min 阅读</span>
+            </div>
+            <h3 class="card-title">
+              <a href="article.html">Claude Opus 4.6 Agent Teams 自主发现 500+ 零日漏洞</a>
+            </h3>
+            <p class="card-excerpt">
+              Anthropic 披露 Claude Opus 4.6 的 16 个 Agent 并行协作，两周内造出 10 万行 C 编译器并自主发现超 500 个零日漏洞。AI 安全能力正在被重新定义...
+            </p>
+            <div class="card-footer">
+              <div class="author">
+                <div class="author-avatar">W</div>
+                <span>Wang Wu</span>
+              </div>
+              <div class="card-tags">
+                <span class="tag">安全</span>
+                <span class="tag">Agent</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 分类区域 -->
+    <section class="categories" id="categories">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="title-prefix">// 领域</span>
+          技术分类
+        </h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="category-grid">
+        <a href="archive.html?category=ai" class="category-card">
+          <div class="category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+              <path d="M12 2a10 10 0 0 1 10 10h-10V2z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>人工智能</h3>
+          <span class="cat-count">42 篇文章</span>
+        </a>
+        <a href="archive.html?category=systems" class="category-card">
+          <div class="category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3>系统编程</h3>
+          <span class="cat-count">28 篇文章</span>
+        </a>
+        <a href="archive.html?category=web" class="category-card">
+          <div class="category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Web 开发</h3>
+          <span class="cat-count">35 篇文章</span>
+        </a>
+        <a href="archive.html?category=data" class="category-card">
+          <div class="category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 3v18h18"/>
+              <path d="M7 16l4-8 4 4 4-6"/>
+            </svg>
+          </div>
+          <h3>数据科学</h3>
+          <span class="cat-count">19 篇文章</span>
+        </a>
+        <a href="archive.html?category=quantum" class="category-card">
+          <div class="category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3>量子计算</h3>
+          <span class="cat-count">12 篇文章</span>
+        </a>
+        <a href="archive.html?category=security" class="category-card">
+          <div class="category-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>网络安全</h3>
+          <span class="cat-count">24 篇文章</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 订阅区域 -->
+    <section class="subscribe" id="subscribe">
+      <div class="subscribe-card">
+        <div class="subscribe-glow"></div>
+        <h2 class="subscribe-title">加入星云社区</h2>
+        <p class="subscribe-desc">
+          每周获取最新的科技深度文章，第一时间了解前沿技术动态
+        </p>
+        <form class="subscribe-form" id="subscribe-form">
+          <div class="input-wrapper">
+            <input type="email" placeholder="输入你的邮箱地址" required>
+            <button type="submit" class="btn-submit">
+              <span>订阅</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

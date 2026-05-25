@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="文章归档 — Nebula Tech 星云科技博客，共收录 128 篇技术文章，覆盖 AI、系统编程、Web 开发、航天科技等领域。">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:title" content="文章归档 — Nebula Tech">
+  <meta property="og:description" content="共收录 128 篇技术文章，覆盖 AI、系统编程、Web 开发、航天科技等领域。">
+  <meta property="og:type" content="website">
+  <title>文章归档 — Nebula Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="archive.css">
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div id="nav-placeholder"></div>
+  <div id="search-placeholder"></div>
+
+  <main>
+    <div class="archive-header">
+      <p class="archive-breadcrumb">
+        <a href="index.html">首页</a> <span>/</span> <span class="current">文章归档</span>
+      </p>
+      <h1 class="archive-title">
+        <span class="title-prefix">// 归档</span>
+        全部文章
+      </h1>
+      <p class="archive-desc">共收录 <strong>128</strong> 篇技术文章，覆盖 AI、系统编程、Web 开发、航天科技等领域</p>
+    </div>
+
+    <div class="archive-filters">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">全部</button>
+        <button class="filter-tab" data-filter="ai">AI · 深度学习</button>
+        <button class="filter-tab" data-filter="systems">系统编程</button>
+        <button class="filter-tab" data-filter="web">Web 开发</button>
+        <button class="filter-tab" data-filter="quantum">量子计算</button>
+        <button class="filter-tab" data-filter="space">航天科技</button>
+        <button class="filter-tab" data-filter="security">网络安全</button>
+      </div>
+      <div class="filter-sort">
+        <select class="sort-select">
+          <option value="latest">最新发布</option>
+          <option value="oldest">最早发布</option>
+          <option value="popular">最多浏览</option>
+          <option value="longest">最长阅读</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="archive-list" id="archive-list">
+      <div class="archive-year-group">
+        <div class="year-header">
+          <span class="year-num">2026</span>
+          <span class="year-count">15 篇</span>
+          <div class="year-line"></div>
+        </div>
+        <div class="year-articles">
+          <article class="archive-item" data-category="ai">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-ai"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">05.20</span>
+                <span class="archive-cat">AI · 深度学习</span>
+                <span class="archive-read">12 min</span>
+              </div>
+              <h3><a href="article.html">GPT-5 技术深度解析：多模态融合的新范式</a></h3>
+              <p>深入探讨下一代大语言模型在架构设计、训练策略以及多模态理解方面的突破性进展...</p>
+              <div class="archive-item-tags">
+                <span class="tag">AI</span><span class="tag">LLM</span><span class="tag">GPT-5</span>
+              </div>
+            </div>
+          </article>
+          <article class="archive-item" data-category="quantum">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-quantum"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">05.18</span>
+                <span class="archive-cat">量子计算</span>
+                <span class="archive-read">8 min</span>
+              </div>
+              <h3><a href="article.html">量子霸权之后：实用化量子计算的路线图</a></h3>
+              <p>从实验室到商业化落地，量子计算正在经历关键的转折点...</p>
+              <div class="archive-item-tags">
+                <span class="tag">量子</span><span class="tag">硬件</span>
+              </div>
+            </div>
+          </article>
+          <article class="archive-item" data-category="web">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-web3"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">05.15</span>
+                <span class="archive-cat">Web 3.0</span>
+                <span class="archive-read">6 min</span>
+              </div>
+              <h3><a href="article.html">去中心化社交协议：Nostr 与 ActivityPub 对比</a></h3>
+              <p>两种主流去中心化社交协议的架构差异、生态发展及未来展望...</p>
+              <div class="archive-item-tags">
+                <span class="tag">Social</span><span class="tag">协议</span>
+              </div>
+            </div>
+          </article>
+          <article class="archive-item" data-category="systems">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-rust"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">05.12</span>
+                <span class="archive-cat">系统编程</span>
+                <span class="archive-read">15 min</span>
+              </div>
+              <h3><a href="article.html">Rust 异步运行时深度对比：Tokio vs Async-std</a></h3>
+              <p>从调度策略到生态系统，全面对比两大 Rust 异步运行时的设计与性能...</p>
+              <div class="archive-item-tags">
+                <span class="tag">Rust</span><span class="tag">Async</span>
+              </div>
+            </div>
+          </article>
+          <article class="archive-item" data-category="space">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-space"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">05.10</span>
+                <span class="archive-cat">航天科技</span>
+                <span class="archive-read">10 min</span>
+              </div>
+              <h3><a href="article.html">Starship 第四次试飞：完全可复用火箭时代来临</a></h3>
+              <p>详细复盘 SpaceX Starship 的关键技术突破与未来深空探索计划...</p>
+              <div class="archive-item-tags">
+                <span class="tag">SpaceX</span><span class="tag">火箭</span>
+              </div>
+            </div>
+          </article>
+          <article class="archive-item" data-category="security">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-security"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">05.08</span>
+                <span class="archive-cat">网络安全</span>
+                <span class="archive-read">7 min</span>
+              </div>
+              <h3><a href="article.html">零知识证明在实际应用中的安全挑战</a></h3>
+              <p>ZKP 技术在隐私保护和扩容方案中的应用及其潜在安全风险分析...</p>
+              <div class="archive-item-tags">
+                <span class="tag">ZKP</span><span class="tag">安全</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="archive-year-group">
+        <div class="year-header">
+          <span class="year-num">2025</span>
+          <span class="year-count">47 篇</span>
+          <div class="year-line"></div>
+        </div>
+        <div class="year-articles">
+          <article class="archive-item" data-category="ai">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-ai"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">12.28</span>
+                <span class="archive-cat">AI · 深度学习</span>
+                <span class="archive-read">14 min</span>
+              </div>
+              <h3><a href="article.html">2025 AI 年度回顾：从 Claude 4 到开源浪潮</a></h3>
+              <p>回顾 2025 年 AI 领域的重大进展，从模型能力飞跃到开源生态的全面崛起...</p>
+              <div class="archive-item-tags">
+                <span class="tag">年度回顾</span><span class="tag">AI</span>
+              </div>
+            </div>
+          </article>
+          <article class="archive-item" data-category="ai">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-ai"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">11.15</span>
+                <span class="archive-cat">AI · 深度学习</span>
+                <span class="archive-read">11 min</span>
+              </div>
+              <h3><a href="article.html">扩散语言模型：一种文本生成的新范式</a></h3>
+              <p>扩散模型在文本生成领域的应用，以及它相比自回归模型的潜在优势...</p>
+              <div class="archive-item-tags">
+                <span class="tag">Diffusion</span><span class="tag">NLP</span>
+              </div>
+            </div>
+          </article>
+          <article class="archive-item" data-category="systems">
+            <div class="archive-item-image"><div class="archive-img-placeholder img-rust"></div></div>
+            <div class="archive-item-body">
+              <div class="archive-item-meta">
+                <span class="archive-date">10.20</span>
+                <span class="archive-cat">系统编程</span>
+                <span class="archive-read">20 min</span>
+              </div>
+              <h3><a href="article.html">用 Rust 重写核心基础设施的实践经验</a></h3>
+              <p>分享将 Python 服务逐步迁移到 Rust 的真实案例、性能对比与踩坑记录...</p>
+              <div class="archive-item-tags">
+                <span class="tag">Rust</span><span class="tag">实践</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <nav class="pagination">
+      <a href="#" class="page-btn disabled">&larr; 上一页</a>
+      <a href="#" class="page-num active">1</a>
+      <a href="#" class="page-num">2</a>
+      <a href="#" class="page-num">3</a>
+      <span class="page-ellipsis">...</span>
+      <a href="#" class="page-num">13</a>
+      <a href="#" class="page-btn">下一页 &rarr;</a>
+    </nav>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script src="script.js"></script>
+  <script src="archive.js"></script>
+</body>
+</html>
