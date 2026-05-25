@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WebAssembly 2026 年度报告：WASI Preview 3 发布、组件模型成熟、浏览器外运行时爆发，WebAssembly 正从浏览器的沙盒走向服务器的核心。">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:title" content="WebAssembly 2026：超越浏览器，重塑云端计算的格局">
+  <meta property="og:description" content="WASI Preview 3 发布、组件模型成熟，WebAssembly 正从浏览器沙盒走向服务器核心。">
+  <meta property="og:type" content="article">
+  <title>WebAssembly 2026：超越浏览器，重塑云端计算格局 — Nebula Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="article.css">
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+  <div id="nav-placeholder"></div>
+  <div id="search-placeholder"></div>
+
+  <main>
+    <article class="article-container">
+      <header class="article-header">
+        <div class="article-breadcrumb">
+          <a href="index.html">首页</a><span>/</span><a href="archive.html">文章</a><span>/</span><span class="current">WebAssembly</span>
+        </div>
+        <div class="article-category-tag">
+          <span class="tag">Web 开发</span><span class="tag">WASM</span><span class="tag">云计算</span>
+        </div>
+        <h1 class="article-title">WebAssembly 2026：超越浏览器，重塑云端计算格局</h1>
+        <p class="article-subtitle">WASI Preview 3 正式发布、组件模型进入生产环境、浏览器外运行时生态爆发——WebAssembly 正从浏览器的沙盒走向服务器的核心，成为云计算的下一个基础设施。</p>
+        <div class="article-meta">
+          <div class="meta-author">
+            <div class="author-avatar-lg">W</div>
+            <div class="author-info">
+              <span class="author-name">Wang Wu</span>
+              <span class="author-role">全栈开发者</span>
+            </div>
+          </div>
+          <div class="meta-details">
+            <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2026 年 5 月 22 日</span>
+            <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>7 分钟阅读</span>
+            <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>1,892 次浏览</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="article-cover">
+        <div class="cover-placeholder" style="background:linear-gradient(135deg,#0a2816 0%,#1a442a 30%,#0a1628 60%,#16281a 100%);">
+          <div class="cover-pattern"></div>
+          <div class="cover-grid"></div>
+          <div class="cover-glow-top" style="background:radial-gradient(ellipse,rgba(0,230,118,0.1) 0%,transparent 70%);"></div>
+        </div>
+      </div>
+
+      <div class="article-layout">
+        <aside class="article-toc">
+          <div class="toc-sticky">
+            <h4 class="toc-title">目录</h4>
+            <ol class="toc-list">
+              <li class="active"><a href="#s1">WASI Preview 3：服务器端 WASM 的拐点</a></li>
+              <li><a href="#s2">组件模型：真正的语言无关互操作</a></li>
+              <li><a href="#s3">运行时生态：从 Wasmtime 到 Fermyon</a></li>
+              <li><a href="#s4">生产实践：谁在用 WASM？</a></li>
+            </ol>
+          </div>
+        </aside>
+
+        <div class="article-body">
+          <section id="s1">
+            <h2>1. WASI Preview 3：服务器端 WASM 的拐点</h2>
+            <p>2026 年 4 月，W3C WebAssembly 社区组正式发布了 <strong>WASI (WebAssembly System Interface) Preview 3</strong> 规范。这是 WASI 历史上最重要的一次更新——首次引入了完整的 <strong>异步 I/O 模型</strong>、<strong>套接字支持</strong>和<strong>线程管理接口</strong>。</p>
+            <p>此前 WASI Preview 2 只支持基本的文件系统操作和环境变量读取，Preview 3 则完全补全了构建服务器应用所需的系统调用能力。这意味着开发者可以用 Rust、Go、C++ 等语言编写 WASM 模块，直接在 Wasmtime、WasmEdge 等运行时上以接近原生的性能运行服务器应用。</p>
+
+            <div class="article-table-wrapper">
+              <table class="article-table">
+                <thead>
+                  <tr><th>特性</th><th>Preview 2</th><th>Preview 3</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>文件系统</td><td>基本读写</td><td>全功能 VFS + 异步 I/O</td></tr>
+                  <tr><td>网络</td><td>不支持</td><td>TCP/UDP 套接字</td></tr>
+                  <tr><td>线程</td><td>不支持</td><td>WASM 线程 + 原子操作</td></tr>
+                  <tr><td>组件模型</td><td>实验性</td><td>稳定版，生产可用</td></tr>
+                  <tr><td>异步支持</td><td>无</td><td>原生 async/await</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="s2">
+            <h2>2. 组件模型：真正的语言无关互操作</h2>
+            <p>WASM 组件模型（Component Model）是 Preview 3 中最具变革性的特性。它允许 <strong>不同语言编写的 WASM 模块之间进行高效的类型安全通信</strong>，通过 WIT（WASM Interface Type）定义接口契约。</p>
+            <p>举个例子：一个用 Rust 编写的高性能图像处理模块可以被 Go 业务服务直接调用，而一个用 Python 编写的机器学习推理模块可以作为独立组件被任何语言消费——所有模块运行在同一个 WASM 运行时沙盒中，彼此隔离，但通过组件模型实现零拷贝通信。</p>
+            <p>这种架构模式被称为 <strong>"WASM 微服务"</strong>，相比传统容器微服务，它的启动时间从秒级降到微秒级，内存占用从几十 MB 降到几百 KB，冷启动性能提升 100 倍以上。这对于 Serverless 和边缘计算场景意义重大。</p>
+          </section>
+
+          <section id="s3">
+            <h2>3. 运行时生态：从 Wasmtime 到 Fermyon</h2>
+            <p>2026 年 WASM 运行时生态已经形成了清晰的格局：</p>
+            <ul class="article-list">
+              <li><strong>Wasmtime (Bytecode Alliance)：</strong>事实上的参考实现，支持 WASI Preview 3 全部特性，由 Fastly、Intel、Mozilla 等共同维护。</li>
+              <li><strong>WasmEdge (CNCF)：</strong>专注于边缘计算和 AI 推理场景。2026 年 5 月发布了 WasmEdge 1.0，原生支持 PyTorch 和 TensorFlow Lite 推理。</li>
+              <li><strong>Fermyon Spin：</strong>面向开发者体验的 WASM 应用框架。用 Spin 构建一个完整的微服务只需要 5 行 Rust 代码，部署只需一个命令。</li>
+              <li><strong>Cloudflare Workers：</strong>全球最大的 WASM 部署平台，使用 V8 引擎运行 WASM 模块，已支持 WASI Preview 3 子集。</li>
+            </ul>
+
+            <blockquote class="article-quote">
+              <p>"WebAssembly is becoming what Java promised 25 years ago: write once, run anywhere — but faster, smaller, and more secure."</p>
+              <cite>— Solomon Hykes, Docker 创始人, May 2026</cite>
+            </blockquote>
+          </section>
+
+          <section id="s4">
+            <h2>4. 生产实践：谁在用 WASM？</h2>
+            <p>WASM 不再只是"玩具技术"，2026 年已有多个大型生产部署案例：</p>
+            <ul class="article-list">
+              <li><strong>Shopify：</strong>将 15 个边缘函数从 JavaScript 迁移到 WASM，P99 延迟下降 60%，CPU 成本降低 40%。</li>
+              <li><strong>Figma：</strong>使用 WASM 在浏览器中运行 C++ 渲染引擎，实现了原生的设计工具交互体验。WASM 模块占 Figma 客户端代码量的 70%。</li>
+              <li><strong>1Password：</strong>使用 WASM 组件模型实现了跨平台密码加密核心的代码共享——同一套 Rust 代码编译为 WASM 后运行在 iOS、Android、Web 和桌面端。</li>
+              <li><strong>Adobe Photoshop Web 版：</strong>将 30 年的 C++ 代码库通过 Emscripten 编译为 WASM，直接在浏览器中实现了桌面级的图片处理功能。</li>
+            </ul>
+            <p>随着 WASI Preview 3 的成熟和组件模型的普及，WASM 正在从"浏览器中的加速器"转变为"云端通用计算运行时"。Kubernetes 社区也在探索将 WASM 模块作为 Pod 的一等公民——与容器平起平坐。云的下一场革命，可能正在 WebAssembly 的字节码中悄然发生。</p>
+          </section>
+
+          <div class="article-tags-footer">
+            <a href="archive.html?search=WASM" class="tag">WebAssembly</a>
+            <a href="archive.html?search=WASI" class="tag">WASI</a>
+            <a href="archive.html?search=云计算" class="tag">云计算</a>
+            <a href="archive.html?search=Serverless" class="tag">Serverless</a>
+            <a href="archive.html?search=边缘计算" class="tag">边缘计算</a>
+            <a href="archive.html?search=Web" class="tag">Web</a>
+          </div>
+
+          <div class="article-share">
+            <span>分享到：</span><a href="#" class="share-btn copy-link-btn">&#x1F4CB; 复制链接</a>
+          </div>
+
+          <div class="author-card">
+            <div class="author-card-avatar">W</div>
+            <div class="author-card-body">
+              <h3>Wang Wu</h3>
+              <p>全栈开发者，专注于 Web 平台和云端基础设施。对 WASM 生态和 Serverless 架构有深入研究。</p>
+              <div class="author-card-social"><a href="#">GitHub</a><a href="#">Twitter</a></div>
+            </div>
+          </div>
+
+          <div class="comments-section">
+            <h3>评论 (<span>6</span>)</h3>
+            <div class="comment-form-wrapper">
+              <div class="comment-avatar">Y</div>
+              <form class="comment-form" id="comment-form">
+                <textarea placeholder="写下你的想法..." rows="3"></textarea>
+                <div class="comment-form-footer">
+                  <span class="comment-hint">支持 Markdown 语法</span>
+                  <button type="submit" class="btn-primary">发表评论</button>
+                </div>
+              </form>
+            </div>
+            <div class="comment-list">
+              <div class="comment">
+                <div class="comment-avatar">D</div>
+                <div class="comment-body">
+                  <div class="comment-header"><span class="comment-author">DevOpsDave</span><span class="comment-time">12 小时前</span></div>
+                  <p>我们团队刚把几个 Lambda 函数迁移到 Fermyon Spin，冷启动从 200ms 降到了不到 1ms，效果惊人。WASM 在 Serverless 场景的优势是碾压级的。</p>
+                  <div class="comment-actions"><button>&#x1F44D; 28</button><button>回复</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="related-posts">
+        <h3 class="related-title">相关推荐</h3>
+        <div class="related-grid">
+          <article class="blog-card">
+            <div class="card-image"><div class="card-img-placeholder img-rust"></div><div class="card-category">系统编程</div></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="meta-date">2026.05.12</span><span class="meta-divider">|</span><span class="meta-read">15 min</span></div>
+              <h3 class="card-title"><a href="article.html">Rust 异步运行时：Tokio vs Async-std</a></h3>
+              <p class="card-excerpt">全面对比两大 Rust 异步运行时...</p>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="card-image"><div class="card-img-placeholder img-web3"></div><div class="card-category">Web 3.0</div></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="meta-date">2026.05.15</span><span class="meta-divider">|</span><span class="meta-read">6 min</span></div>
+              <h3 class="card-title"><a href="article.html">去中心化社交协议：Nostr vs ActivityPub</a></h3>
+              <p class="card-excerpt">两种主流去中心化社交协议的架构差异...</p>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="card-image"><div class="card-img-placeholder img-ai"></div><div class="card-category">AI · 大模型</div></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="meta-date">2026.04.16</span><span class="meta-divider">|</span><span class="meta-read">11 min</span></div>
+              <h3 class="card-title"><a href="article.html">Claude Code 实战指南</a></h3>
+              <p class="card-excerpt">用 AI Agent 管理十万行代码库...</p>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </article>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+  <script src="script.js"></script>
+  <script src="article.js"></script>
+</body>
+</html>

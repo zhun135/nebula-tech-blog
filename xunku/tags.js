@@ -4,6 +4,27 @@
 
 const articles = [
   {
+    title: '具身智能爆发：2026 人形机器人量产元年全解读',
+    date: '2026.05.25',
+    excerpt: 'Figure 03 进宝马工厂、Tesla Optimus Gen 3 量产启动、宇树 H1 全球出货超 500 台——人形机器人正从实验室以惊人速度走进工厂和家庭...',
+    link: 'article-embodied-ai.html',
+    tags: ['具身智能', '机器人', 'Figure', 'Optimus', '宇树']
+  },
+  {
+    title: 'Rust 进入 Linux 内核：30 年 C 语言王朝的转折点',
+    date: '2026.05.24',
+    excerpt: 'Linus Torvalds 正式合并首个 Rust 设备驱动进内核主线，内存安全终于从编译时得到了保证。零内存漏洞 vs 70% 的 CVE，内核开发进入新纪元...',
+    link: 'article-rust-kernel.html',
+    tags: ['Rust', 'Linux', '内核', '开源']
+  },
+  {
+    title: 'WebAssembly 2026：超越浏览器，重塑云端计算格局',
+    date: '2026.05.22',
+    excerpt: 'WASI Preview 3 正式发布、组件模型进入生产环境、浏览器外运行时生态爆发——WebAssembly 正从浏览器的沙盒走向服务器的核心...',
+    link: 'article-wasm-2026.html',
+    tags: ['WASM', 'WASI', '云计算', 'Web']
+  },
+  {
     title: 'GPT-5.5 vs Claude Opus 4.7：2026 大模型争霸战全景解读',
     date: '2026.05.24',
     excerpt: '短短两周内，OpenAI 发布 GPT-5.5 全面超越 Claude Opus 4.7，幻觉减少 60%。从参数竞赛到 Agent 协作，这场 AI 军备竞赛正在重新定义技术的边界...',

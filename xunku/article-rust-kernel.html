@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rust 正式进入 Linux 内核主线：Linus Torvalds 合并首个 Rust 设备驱动，30 年 C 语言霸主地位被打破。深度解读这一历史性事件。">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta property="og:title" content="Rust 进入 Linux 内核：30 年 C 语言王朝的转折点">
+  <meta property="og:description" content="Linus Torvalds 合并首个 Rust 设备驱动，操作系统内核开发进入了新时代。">
+  <meta property="og:type" content="article">
+  <title>Rust 进入 Linux 内核：30 年 C 语言王朝的转折点 — Nebula Tech</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="article.css">
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+  <div id="nav-placeholder"></div>
+  <div id="search-placeholder"></div>
+
+  <main>
+    <article class="article-container">
+      <header class="article-header">
+        <div class="article-breadcrumb">
+          <a href="index.html">首页</a><span>/</span><a href="archive.html">文章</a><span>/</span><span class="current">Rust 内核</span>
+        </div>
+        <div class="article-category-tag">
+          <span class="tag">系统编程</span><span class="tag">Rust</span><span class="tag">Linux</span>
+        </div>
+        <h1 class="article-title">Rust 进入 Linux 内核：30 年 C 语言王朝的转折点</h1>
+        <p class="article-subtitle">2026 年 5 月，Linus Torvalds 正式将首个 Rust 设备驱动合并进 Linux 内核主线，标志着操作系统内核开发进入了一个新时代。C 语言统治了 30 年的内核世界，终于迎来了第一个真正的挑战者。</p>
+        <div class="article-meta">
+          <div class="meta-author">
+            <div class="author-avatar-lg">W</div>
+            <div class="author-info">
+              <span class="author-name">Wang Wu</span>
+              <span class="author-role">全栈开发者</span>
+            </div>
+          </div>
+          <div class="meta-details">
+            <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2026 年 5 月 24 日</span>
+            <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>9 分钟阅读</span>
+            <span class="meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>2,108 次浏览</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="article-cover">
+        <div class="cover-placeholder" style="background:linear-gradient(135deg,#28160a 0%,#44301a 30%,#1a1628 60%,#0a0a18 100%);">
+          <div class="cover-pattern"></div>
+          <div class="cover-grid"></div>
+          <div class="cover-glow-top" style="background:radial-gradient(ellipse,rgba(255,140,0,0.1) 0%,transparent 70%);"></div>
+        </div>
+      </div>
+
+      <div class="article-layout">
+        <aside class="article-toc">
+          <div class="toc-sticky">
+            <h4 class="toc-title">目录</h4>
+            <ol class="toc-list">
+              <li class="active"><a href="#s1">历史性合并：首个 Rust 驱动入主线</a></li>
+              <li><a href="#s2">为什么是 Rust？内存安全的终极方案</a></li>
+              <li><a href="#s3">内核社区的激烈争论</a></li>
+              <li><a href="#s4">实际效果：Rust vs C 驱动对比</a></li>
+              <li><a href="#s5">未来：Rust for Linux 路线图</a></li>
+            </ol>
+          </div>
+        </aside>
+
+        <div class="article-body">
+          <section id="s1">
+            <h2>1. 历史性合并：首个 Rust 驱动入主线</h2>
+            <p>2026 年 5 月 20 日，<strong>Linus Torvalds</strong> 在 Linux 6.12-rc1 合并窗口中接受了一个历史性的 Pull Request——<strong>首个用 Rust 编写的设备驱动程序</strong>被正式合并进内核主线。该驱动是 Asahi Linux 项目为 Apple Silicon Mac 开发的 GPU 内核驱动的一部分，主要负责硬件寄存器的初始化和中断处理。</p>
+            <p>这个合并请求之所以具有里程碑意义，是因为它标志着 Rust for Linux 项目从"实验性支持"迈入了<strong>"生产可用"</strong>阶段。自 2020 年 Rust for Linux 项目启动以来，内核社区花了 6 年时间完成了 Rust 基础设施的搭建——包括 Rust 与 C 的 FFI 绑定、内核专用 alloc 库、以及抽象层设计。</p>
+
+            <blockquote class="article-quote">
+              <p>"I'm cautiously optimistic. This is the first real Rust driver and it doesn't look horrible. Let's see where this goes."</p>
+              <cite>— Linus Torvalds, LKML, May 2026</cite>
+            </blockquote>
+          </section>
+
+          <section id="s2">
+            <h2>2. 为什么是 Rust？内存安全的终极方案</h2>
+            <p>在操作系统内核这种底层环境中，<strong>内存安全漏洞</strong>是最严重的安全威胁。微软的研究表明，Windows 内核中约 <strong>70% 的 CVE</strong> 与内存安全问题有关。Google 的 Android 团队也报告了类似的比例——<strong>65% 的高危安全漏洞</strong>源于内存管理错误。</p>
+            <p>Rust 的所有权系统和借用检查器在编译时就能消除三类最危险的内存错误：</p>
+            <ul class="article-list">
+              <li><strong>Use-after-free：</strong>Rust 编译器在编译时追踪每个变量的生命周期，绝不允许访问已释放的内存。</li>
+              <li><strong>缓冲区溢出：</strong>所有数组访问都会进行边界检查，或者在 unsafe 块中被明确标记。</li>
+              <li><strong>数据竞争：</strong>类型系统确保同一时间只能有一个可变引用或多个不可变引用。</li>
+            </ul>
+          </section>
+
+          <section id="s3">
+            <h2>3. 内核社区的激烈争论</h2>
+            <p>Rust 进入内核并非一帆风顺。内核社区经历了长达数年的激烈辩论：</p>
+            <h3>反对派的主要论点</h3>
+            <p>以 Christoph Hellwig 为代表的内核维护者曾强烈反对 Rust。核心担忧包括：Rust 编译器的不稳定性（内核需要支持多种架构，包括很多陈旧的嵌入式平台）、维护负担（内核维护者需要学习 Rust）、以及 C/Rust 混合代码库的复杂性。</p>
+            <h3>支持派的回应</h3>
+            <p>Google（Android 团队）、Microsoft、ARM 等公司是 Rust for Linux 的主要推动者。Google 在 Android 内核中率先使用 Rust 编写了 Binder 驱动和蓝牙协议栈，并用数据证明了 Rust 代码的安全性优势——<strong>零内存安全漏洞</strong>。</p>
+          </section>
+
+          <section id="s4">
+            <h2>4. 实际效果：Rust vs C 驱动对比</h2>
+            <p>Asahi Linux 团队在开发过程中做了一个有趣的对比：他们用 C 和 Rust 分别实现了同一款 Apple Silicon GPIO 驱动的原型。结果如下：</p>
+
+            <div class="article-table-wrapper">
+              <table class="article-table">
+                <thead>
+                  <tr><th>指标</th><th>C 版本</th><th>Rust 版本</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>代码行数</td><td>1,230</td><td>890</td></tr>
+                  <tr><td>编译警告数</td><td>14</td><td>0</td></tr>
+                  <tr><td>静态分析告警</td><td>23</td><td>0（编译器保证）</td></tr>
+                  <tr><td>运行时崩溃（测试阶段）</td><td>3 次</td><td>0 次</td></tr>
+                  <tr><td>开发时间</td><td>3 周</td><td>2 周</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Rust 版本的代码量比 C 少了 28%，而且测试阶段没有出现任何运行时崩溃。当然，这个对比的样本量很小，但趋势已经非常明显。</p>
+          </section>
+
+          <section id="s5">
+            <h2>5. 未来：Rust for Linux 路线图</h2>
+            <p>随着首个 Rust 驱动入主线，Rust for Linux 项目的路线图也变得更加清晰：</p>
+            <ul class="article-list">
+              <li><strong>Linux 6.12：</strong>首个 Rust 驱动（Apple GPU），Rust 基础设施标记为 stable。</li>
+              <li><strong>Linux 6.14：</strong>计划合并 Rust 编写的 NVMe 驱动和 Binder 重构版本。</li>
+              <li><strong>Linux 6.16：</strong>目标：Rust 网络协议栈子系统（TCP/IP 核心模块）。</li>
+              <li><strong>2027+：</strong>新建的子系统（如新的文件系统、驱动）可能默认推荐 Rust。</li>
+            </ul>
+            <p>这并不意味着 C 语言会消失。Linux 内核有超过 3000 万行 C 代码，这些代码不会重写。但新代码开始向 Rust 倾斜的趋势已经不可逆转。正如 Greg Kroah-Hartman 所说："我们不是在用 Rust 替换 C，我们是在用 Rust 写那些本来会用 C 写的新代码——只是这些新代码更安全。"</p>
+            <p>30 年的 C 语言王朝，终于迎来了一个值得尊敬的挑战者。</p>
+          </section>
+
+          <div class="article-tags-footer">
+            <a href="archive.html?search=Rust" class="tag">Rust</a>
+            <a href="archive.html?search=Linux" class="tag">Linux</a>
+            <a href="archive.html?search=内核" class="tag">内核</a>
+            <a href="archive.html?search=内存安全" class="tag">内存安全</a>
+            <a href="archive.html?search=开源" class="tag">开源</a>
+            <a href="archive.html?search=驱动" class="tag">驱动</a>
+          </div>
+
+          <div class="article-share">
+            <span>分享到：</span><a href="#" class="share-btn copy-link-btn">&#x1F4CB; 复制链接</a>
+          </div>
+
+          <div class="author-card">
+            <div class="author-card-avatar">W</div>
+            <div class="author-card-body">
+              <h3>Wang Wu</h3>
+              <p>全栈开发者，十年开发经验，专注于 Rust 与分布式系统架构。长期追踪 Linux 内核和开源社区动态。</p>
+              <div class="author-card-social"><a href="#">GitHub</a><a href="#">Twitter</a></div>
+            </div>
+          </div>
+
+          <div class="comments-section">
+            <h3>评论 (<span>15</span>)</h3>
+            <div class="comment-form-wrapper">
+              <div class="comment-avatar">Y</div>
+              <form class="comment-form" id="comment-form">
+                <textarea placeholder="写下你的想法..." rows="3"></textarea>
+                <div class="comment-form-footer">
+                  <span class="comment-hint">支持 Markdown 语法</span>
+                  <button type="submit" class="btn-primary">发表评论</button>
+                </div>
+              </form>
+            </div>
+            <div class="comment-list">
+              <div class="comment">
+                <div class="comment-avatar">K</div>
+                <div class="comment-body">
+                  <div class="comment-header"><span class="comment-author">KernelDev</span><span class="comment-time">1 天前</span></div>
+                  <p>做内核开发 15 年了，一开始对 Rust 很抵触。但去年尝试用 Rust 写了一个小驱动后，真的被 borrow checker 说服了——很多之前靠经验和静态分析工具才能避免的 bug，编译器直接帮你挡掉了。</p>
+                  <div class="comment-actions"><button>&#x1F44D; 47</button><button>回复</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="related-posts">
+        <h3 class="related-title">相关推荐</h3>
+        <div class="related-grid">
+          <article class="blog-card">
+            <div class="card-image"><div class="card-img-placeholder img-rust"></div><div class="card-category">系统编程</div></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="meta-date">2026.05.12</span><span class="meta-divider">|</span><span class="meta-read">15 min</span></div>
+              <h3 class="card-title"><a href="article.html">Rust 异步运行时：Tokio vs Async-std</a></h3>
+              <p class="card-excerpt">从调度策略到生态系统，全面对比两大 Rust 异步运行时...</p>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="card-image"><div class="card-img-placeholder img-security"></div><div class="card-category">网络安全</div></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="meta-date">2026.05.08</span><span class="meta-divider">|</span><span class="meta-read">7 min</span></div>
+              <h3 class="card-title"><a href="article.html">零知识证明在实际应用中的安全挑战</a></h3>
+              <p class="card-excerpt">ZKP 技术在隐私保护和扩容方案中的应用...</p>
+            </div>
+          </article>
+          <article class="blog-card">
+            <div class="card-image"><div class="card-img-placeholder img-ai"></div><div class="card-category">AI · 大模型</div></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="meta-date">2026.04.16</span><span class="meta-divider">|</span><span class="meta-read">11 min</span></div>
+              <h3 class="card-title"><a href="article.html">Claude Code 实战指南</a></h3>
+              <p class="card-excerpt">用 AI Agent 管理十万行代码库...</p>
+            </div>
+          </article>
+        </div>
+      </aside>
+    </article>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+  <script src="script.js"></script>
+  <script src="article.js"></script>
+</body>
+</html>
