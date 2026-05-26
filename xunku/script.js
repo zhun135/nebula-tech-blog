@@ -298,3 +298,105 @@ function showToast(message, type) {
   container.appendChild(toast);
   setTimeout(function () { toast.remove(); }, 2800);
 }
+
+// ---------- 首页文章动态加载 ----------
+(function () {
+  var featuredGrid = document.querySelector('.featured-grid');
+  if (!featuredGrid) return;
+
+  NebulaAPI.getArticles({ limit: 6 }).then(function (articles) {
+    if (!articles || articles.length === 0) return;
+
+    var catClassMap = {
+      'ai': 'img-ai', '量子计算': 'img-quantum', '航天科技': 'img-space',
+      '系统编程': 'img-rust', 'web': 'img-web3', '安全': 'img-security',
+      '机器人': 'img-ai', 'space': 'img-space'
+    };
+
+    function getCatClass(cat) {
+      var c = (cat || '').toLowerCase();
+      if (c.indexOf('ai') !== -1 || c.indexOf('人工') !== -1 || c.indexOf('机器') !== -1) return 'img-ai';
+      if (c.indexOf('量子') !== -1) return 'img-quantum';
+      if (c.indexOf('航天') !== -1 || c.indexOf('space') !== -1) return 'img-space';
+      if (c.indexOf('系统') !== -1 || c.indexOf('rust') !== -1) return 'img-rust';
+      if (c.indexOf('web') !== -1) return 'img-web3';
+      if (c.indexOf('安全') !== -1) return 'img-security';
+      return 'img-ai';
+    }
+
+    function getCatSlug(cat) {
+      var c = (cat || '').toLowerCase();
+      if (c.indexOf('ai') !== -1 || c.indexOf('人工') !== -1) return 'ai';
+      if (c.indexOf('量子') !== -1) return 'quantum';
+      if (c.indexOf('航天') !== -1 || c.indexOf('space') !== -1) return 'space';
+      if (c.indexOf('系统') !== -1) return 'systems';
+      if (c.indexOf('web') !== -1) return 'web';
+      if (c.indexOf('安全') !== -1) return 'security';
+      if (c.indexOf('机器') !== -1 || c.indexOf('具身') !== -1) return 'robot';
+      return 'all';
+    }
+
+    var mainArticle = articles[0];
+    var restArticles = articles.slice(1, 6);
+
+    var html = '';
+
+    // 主推文章（大卡片）
+    html += '<article class="blog-card featured-main">';
+    html += '<div class="card-image">';
+    html += '<div class="card-img-placeholder ' + getCatClass(mainArticle.category) + '"></div>';
+    html += '<div class="card-category">' + escapeHtml(mainArticle.category) + '</div>';
+    html += '</div>';
+    html += '<div class="card-body">';
+    html += '<div class="card-meta">';
+    html += '<span class="meta-date">' + (mainArticle.created_at || '') + '</span>';
+    html += '<span class="meta-divider">|</span>';
+    html += '<span class="meta-read">' + mainArticle.read_time + ' min 阅读</span>';
+    html += '</div>';
+    html += '<h3 class="card-title"><a href="' + mainArticle.slug + '.html">' + escapeHtml(mainArticle.title) + '</a></h3>';
+    html += '<p class="card-excerpt">' + escapeHtml((mainArticle.subtitle || '').substring(0, 150)) + '...</p>';
+    html += '<div class="card-footer">';
+    html += '<div class="author"><div class="author-avatar">' + escapeHtml(mainArticle.author_avatar) + '</div><span>' + escapeHtml(mainArticle.author) + '</span></div>';
+    html += '<div class="card-tags">';
+    (mainArticle.tags || []).slice(0, 3).forEach(function (t) { html += '<span class="tag">' + escapeHtml(t) + '</span>'; });
+    html += '</div></div></div></article>';
+
+    // 其余文章（小卡片）
+    restArticles.forEach(function (a) {
+      html += '<article class="blog-card">';
+      html += '<div class="card-image">';
+      html += '<div class="card-img-placeholder ' + getCatClass(a.category) + '"></div>';
+      html += '<div class="card-category">' + escapeHtml(a.category) + '</div>';
+      html += '</div>';
+      html += '<div class="card-body">';
+      html += '<div class="card-meta">';
+      html += '<span class="meta-date">' + (a.created_at || '') + '</span>';
+      html += '<span class="meta-divider">|</span>';
+      html += '<span class="meta-read">' + a.read_time + ' min 阅读</span>';
+      html += '</div>';
+      html += '<h3 class="card-title"><a href="' + a.slug + '.html">' + escapeHtml(a.title) + '</a></h3>';
+      html += '<p class="card-excerpt">' + escapeHtml((a.subtitle || '').substring(0, 100)) + '...</p>';
+      html += '<div class="card-footer">';
+      html += '<div class="author"><div class="author-avatar">' + escapeHtml(a.author_avatar) + '</div><span>' + escapeHtml(a.author) + '</span></div>';
+      html += '<div class="card-tags">';
+      (a.tags || []).slice(0, 3).forEach(function (t) { html += '<span class="tag">' + escapeHtml(t) + '</span>'; });
+      html += '</div></div></div></article>';
+    });
+
+    featuredGrid.innerHTML = html;
+
+    // 重新观察新卡片
+    var newCards = featuredGrid.querySelectorAll('.blog-card');
+    for (var i = 0; i < newCards.length; i++) {
+      scrollObserver.observe(newCards[i]);
+    }
+  }).catch(function () {
+    // API 不可用，保留静态 HTML
+  });
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+})();

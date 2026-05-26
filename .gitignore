@@ -18,3 +18,8 @@ Desktop.ini
 .claude/
 memory/
 CLAUDE.md
+
+# 后端
+node_modules/
+server/node_modules/
+data/
