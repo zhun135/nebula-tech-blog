@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nebula-tech-blog",
+  "compatibility_date": "2026-05-26",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "xunku"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
