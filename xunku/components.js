@@ -1,6 +1,7 @@
 /* ===================================
    Nebula Tech Blog · 公共组件引擎
    导航栏 / 搜索覆盖层 / 页脚 / 主题切换 / 移动菜单
+   含 05 游戏入口
    =================================== */
 
 (function () {
@@ -27,6 +28,7 @@
           <li><a href="archive.html" class="nav-item${currentPage === 'archive' || currentPage === 'article' || currentPage === 'tags' ? ' active' : ''}"><span class="nav-num">02</span> 文章</a></li>
           <li><a href="index.html#categories" class="nav-item"><span class="nav-num">03</span> 分类</a></li>
           <li><a href="about.html" class="nav-item${currentPage === 'about' ? ' active' : ''}"><span class="nav-num">04</span> 关于</a></li>
+          <li><a href="games.html" class="nav-item${currentPage === 'games' ? ' active' : ''}"><span class="nav-num">05</span> 游戏</a></li>
         </ul>
         <div class="nav-actions">
           <button class="btn-search" id="btn-search" aria-label="搜索">
@@ -82,6 +84,7 @@
             <li><a href="archive.html">文章归档</a></li>
             <li><a href="tags.html">标签云</a></li>
             <li><a href="about.html">关于我们</a></li>
+            <li><a href="games.html">🎮 05游戏</a></li>
           </ul>
         </div>
         <div class="footer-links">

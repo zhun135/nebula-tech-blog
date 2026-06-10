@@ -1,0 +1,349 @@
+/* ===================================
+   05游戏 · 游戏中心样式
+   Nebula Tech 深色科技风 + Steam 卡片
+   =================================== */
+
+/* ---------- Hero ---------- */
+.games-hero {
+  position: relative;
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 24px 80px;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0, 255, 100, 0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 30%, rgba(0, 229, 255, 0.04) 0%, transparent 50%);
+}
+.games-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 60% 40%, rgba(0, 255, 100, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 30% 60%, rgba(0, 255, 100, 0.02) 0%, transparent 40%);
+  pointer-events: none;
+}
+.games-hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+.games-hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.title-num {
+  font-family: 'SF Mono', 'Consolas', monospace;
+  font-size: 0.5em;
+  color: #00ff64;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+.title-text {
+  background: linear-gradient(135deg, #00ff64 0%, #00e5ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.games-hero-desc {
+  color: var(--text-secondary, #8892a4);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* 装饰 */
+.games-hero-deco {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.deco-crosshair {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  width: 80px;
+  height: 80px;
+  opacity: 0.08;
+  background:
+    linear-gradient(90deg, transparent 48%, #00ff64 48%, #00ff64 52%, transparent 52%),
+    linear-gradient(180deg, transparent 48%, #00ff64 48%, #00ff64 52%, transparent 52%);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.deco-rings {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translateY(-50%);
+}
+.deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 255, 100, 0.1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.deco-ring.r1 { width: 160px; height: 160px; }
+.deco-ring.r2 { width: 240px; height: 240px; }
+.deco-ring.r3 { width: 320px; height: 320px; }
+
+/* ---------- 游戏网格 ---------- */
+.games-grid-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+.game-count {
+  color: var(--text-secondary, #8892a4);
+  font-size: 0.85rem;
+}
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+/* ---------- 游戏卡片 ---------- */
+.game-card {
+  background: rgba(15, 17, 25, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.game-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 255, 100, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 100, 0.08);
+}
+.game-card.featured-game {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 700px) {
+  .game-card.featured-game {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 卡片媒体区 */
+.game-card-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+}
+.featured-game .game-card-media {
+  aspect-ratio: auto;
+  min-height: 280px;
+}
+.game-card-img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.4s ease;
+}
+.game-card:hover .game-card-img {
+  transform: scale(1.04);
+}
+
+/* Dust2 背景 */
+.dust2-bg {
+  background:
+    linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  position: relative;
+}
+.dust2-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 50%, rgba(255, 180, 50, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(0, 200, 100, 0.1) 0%, transparent 40%);
+}
+.dust2-bg::after {
+  content: 'DUST2';
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-family: 'SF Mono', 'Consolas', monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.06);
+  letter-spacing: 8px;
+}
+
+/* 占位背景 */
+.placeholder-bg {
+  background: linear-gradient(135deg, #1a1a2e 0%, #1a1a2e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder-bg2 {
+  background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 遮罩层 */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 12px;
+}
+.game-overlay-tags {
+  display: flex;
+  gap: 6px;
+}
+.game-tag {
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #ccc;
+}
+.coming-label {
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+}
+
+.game-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 5px 14px;
+  background: linear-gradient(135deg, #ff6b35, #ff3860);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  z-index: 2;
+}
+
+/* 卡片内容 */
+.game-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.game-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.game-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary, #e4e7ed);
+}
+.game-title.dim {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* 星级 */
+.game-rating {
+  display: flex;
+  gap: 1px;
+}
+.star {
+  color: rgba(255, 255, 255, 0.12);
+  font-size: 0.85rem;
+}
+.star.full {
+  color: #ffc107;
+}
+
+.game-desc {
+  color: var(--text-secondary, #8892a4);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  flex: 1;
+}
+.game-desc.dim {
+  color: rgba(255, 255, 255, 0.12);
+}
+
+/* 元数据 */
+.game-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.game-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--text-secondary, #8892a4);
+}
+.game-meta-item.dim {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+/* 游玩按钮 */
+.game-play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #00c853, #00e676);
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 4px;
+  align-self: flex-start;
+}
+.game-play-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 255, 100, 0.4);
+  background: linear-gradient(135deg, #00e676, #69f0ae);
+}
+.game-play-btn.disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.game-play-btn.disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* 即将上线卡片 */
+.game-card.coming-soon {
+  opacity: 0.55;
+}
+.game-card.coming-soon:hover {
+  opacity: 0.75;
+}
