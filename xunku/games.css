@@ -183,6 +183,34 @@
   letter-spacing: 8px;
 }
 
+/* 星云塔防背景 */
+.nebula-td-bg {
+  background:
+    linear-gradient(135deg, #0d1020 0%, #1a1030 40%, #0f1628 100%);
+  position: relative;
+}
+.nebula-td-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 60% 30%, rgba(180, 77, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 25% 70%, rgba(0, 229, 255, 0.10) 0%, transparent 35%),
+    repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(255,255,255,0.015) 15px, rgba(255,255,255,0.015) 16px),
+    repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(255,255,255,0.015) 15px, rgba(255,255,255,0.015) 16px);
+}
+.nebula-td-bg::after {
+  content: 'TOWER DEFENSE';
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-family: 'SF Mono', 'Consolas', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  letter-spacing: 6px;
+}
+
 /* 占位背景 */
 .placeholder-bg {
   background: linear-gradient(135deg, #1a1a2e 0%, #1a1a2e 100%);

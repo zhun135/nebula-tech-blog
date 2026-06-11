@@ -492,19 +492,19 @@ main {
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  border: 1px solid rgba(0, 255, 100, 0.35);
+  border: 1px solid var(--accent-glow);
   border-radius: 50px;
-  background: rgba(0, 255, 100, 0.08);
+  background: rgba(0, 229, 255, 0.08);
   font-size: 0.95rem;
   font-weight: 500;
-  color: #00ff64;
+  color: var(--accent);
   text-decoration: none;
   transition: var(--transition);
 }
 .btn-game:hover {
-  border-color: #00ff64;
-  background: rgba(0, 255, 100, 0.15);
-  box-shadow: 0 0 25px rgba(0, 255, 100, 0.3);
+  border-color: var(--accent);
+  background: rgba(0, 229, 255, 0.15);
+  box-shadow: 0 0 25px var(--accent-glow);
   transform: translateY(-2px);
 }
 
@@ -1381,72 +1381,5 @@ main {
   }
 }
 
-/* ===== 05 游戏入口横幅 ===== */
-.game-banner {
-  max-width: 1100px;
-  margin: 0 auto 60px;
-  padding: 0 24px;
-}
-.game-banner-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 32px 36px;
-  background: linear-gradient(135deg, rgba(0, 255, 100, 0.06), rgba(0, 229, 255, 0.04));
-  border: 1px solid rgba(0, 255, 100, 0.15);
-  border-radius: 16px;
-  text-decoration: none;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-}
-.game-banner-link:hover {
-  border-color: rgba(0, 255, 100, 0.35);
-  background: linear-gradient(135deg, rgba(0, 255, 100, 0.1), rgba(0, 229, 255, 0.06));
-  box-shadow: 0 8px 30px rgba(0, 255, 100, 0.08);
-  transform: translateY(-2px);
-}
-.game-banner-content {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.game-banner-title {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-.game-banner-heading {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary, #e4e7ed);
-}
-.game-banner-desc {
-  color: var(--text-secondary, #8892a4);
-  font-size: 0.92rem;
-}
-.game-banner-arrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #00c853, #00e676);
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #000;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-}
-.game-banner-link:hover .game-banner-arrow {
-  box-shadow: 0 4px 20px rgba(0, 255, 100, 0.4);
-}
-@media (max-width: 600px) {
-  .game-banner-link {
-    flex-direction: column;
-    text-align: center;
-  }
-  .game-banner-title {
-    justify-content: center;
-  }
-}
+/* ===== 游戏入口横幅（已移除——改用 hero 按钮） ===== */
+
